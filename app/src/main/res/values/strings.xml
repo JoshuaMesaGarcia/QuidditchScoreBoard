@@ -4,6 +4,7 @@
     <string name="select_house">House</string>
 
     <string-array name="houses_arrays">
+        <item>--Houses--</item>
         <item>Slytherin</item>
         <item>Ravenclaw</item>
         <item>Gryffindor</item>

@@ -27,7 +27,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#1B5E20"
+            android:background="#fff"
             android:orientation="vertical">
 
             <LinearLayout
@@ -107,7 +107,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#283593"
+            android:background="#ffff"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -232,4 +232,12 @@
         android:layout_marginBottom="15dp"
         android:onClick="newMatch"
         android:text="New Match" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Start Match"
+        android:layout_marginTop="95dp"/>
 </RelativeLayout>
