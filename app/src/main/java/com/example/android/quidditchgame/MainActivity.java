@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner selectHB;
     ImageView bannerHA;
     ImageView bannerHB;
-
+    Button bttnStart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         selectHB = (Spinner) findViewById(R.id.select_houseB);
         bannerHA = (ImageView) findViewById(R.id.bannerHouseA);
         bannerHB = (ImageView) findViewById(R.id.bannerHouseB);
+        bttnStart = (Button) findViewById(R.id.startButton);
 
         selectHA.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
@@ -74,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
                 bannerHA.setImageDrawable(null);
                 linearHA.setBackgroundColor(Color.WHITE);
             }
+
+
         });
 
         selectHB.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
@@ -113,9 +116,20 @@ public class MainActivity extends AppCompatActivity {
                 linearHB.setBackgroundColor(Color.WHITE);
             }
         });
+
+        bttnSHA.setEnabled(false);
+        bttnSHB.setEnabled(false);
+        actionButtons(false);
     }
 
-
+    public void  startMatchButton(View View){
+        selectHB.setEnabled(false);
+        selectHA.setEnabled(false);
+        bttnSHA.setEnabled(true);
+        bttnSHB.setEnabled(true);
+        actionButtons(true);
+        bttnStart.setVisibility(View.INVISIBLE);
+    }
 
     public void scoreIncreaseTA (View scoreOn){
         String score = scoreOn.getTag().toString();
@@ -159,6 +173,11 @@ public class MainActivity extends AppCompatActivity {
         actionButtons(true);
         bttnSHB.setEnabled(true);
         bttnSHA.setEnabled(true);
+        bttnStart.setVisibility(View.VISIBLE);
+        selectHB.setEnabled(true);
+        selectHA.setEnabled(true);
+        linearHA.setBackgroundColor(Color.parseColor("#ffff"));
+        linearHB.setBackgroundColor(Color.parseColor("#ffff"));
     }
 
     private void displayScoreA(int Number){
