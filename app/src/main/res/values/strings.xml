@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Quidditch Game</string>
+
+    <string name="select_house">House</string>
+
+    <string-array name="houses_arrays">
+        <item>Slytherin</item>
+        <item>Ravenclaw</item>
+        <item>Gryffindor</item>
+        <item>Hufflepuff</item>
+    </string-array>
+
+</resources>

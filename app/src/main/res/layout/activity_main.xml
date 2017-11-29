@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="com.example.android.quidditchgame.MainActivity">
+
+    <TextView
+        android:id="@+id/mainTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quidditch Match"
+        android:textAlignment="center"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mainTitle"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/linearA"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#1B5E20"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="6sp"
+                    android:text="House:"
+                    android:textColor="#9E9E9E"
+                    android:textSize="22sp" />
+
+                <Spinner
+                    android:id="@+id/select_houseA"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:entries="@array/houses_arrays"
+                    android:paddingRight="6dp"
+                    android:layout_marginRight="25dp"
+                    android:prompt="@string/select_house" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/pointsTeamA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:paddingBottom="24dp"
+                android:paddingRight="22sp"
+                android:text="0"
+                android:textAlignment="center"
+                android:textColor="#9E9E9E"
+                android:textSize="56sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="45dp"
+                android:background="#fab616"
+                android:tag="10"
+                android:onClick="scoreIncreaseTA"
+                android:text="+10 Points" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="45dp"
+                android:background="#fab616"
+                android:tag="20"
+                android:onClick="scoreIncreaseTA"
+                android:text="+20 Points" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="45dp"
+                android:background="#fab616"
+                android:tag="30"
+                android:onClick="scoreIncreaseTA"
+                android:text="+30 Points" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearB"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#283593"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:paddingLeft="6dp"
+                android:text="House: "
+                android:textColor="#9E9E9E"
+                android:textSize="22sp" />
+
+                <Spinner
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:id="@+id/select_houseB"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="6dp"
+                    android:layout_marginRight="26dp"
+                    android:entries="@array/houses_arrays"
+                    android:prompt="@string/select_house"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/pointsTeamB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:paddingBottom="24dp"
+                android:paddingLeft="22sp"
+                android:text="0"
+                android:textAlignment="center"
+                android:textColor="#9E9E9E"
+                android:textSize="56sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="30dp"
+                android:background="#fab616"
+                android:tag="10"
+                android:onClick="scoreIncreaseTB"
+                android:text="+10 Points" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="30dp"
+                android:background="#fab616"
+                android:tag="20"
+                android:onClick="scoreIncreaseTB"
+                android:text="+20 Points" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="30dp"
+                android:background="#fab616"
+                android:tag="30"
+                android:onClick="scoreIncreaseTB"
+                android:text="+30 Points" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/bannerHouseA"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="-7dp"
+        android:src="@drawable/slytherinbanner" />
+
+    <ImageView
+        android:id="@+id/bannerHouseB"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="-5dp"
+        android:src="@drawable/ravenclawbanner" />
+
+    <Button
+        android:id="@+id/buttonSA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="125dp"
+        android:onClick="scoreSnitchA"
+        android:textColor="#FFFFFF"
+        android:text="Snitch Catched" />
+
+    <Button
+        android:id="@+id/buttonSB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="70dp"
+        android:textColor="#FFFFFF"
+        android:onClick="scoreSnitchB"
+        android:text="Snitch Catched" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="15dp"
+        android:onClick="newMatch"
+        android:text="New Match" />
+</RelativeLayout>
