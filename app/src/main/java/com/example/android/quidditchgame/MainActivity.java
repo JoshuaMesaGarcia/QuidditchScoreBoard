@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView bannerHA;
     ImageView bannerHB;
     Button bttnStart;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,21 +51,55 @@ public class MainActivity extends AppCompatActivity {
                     linearHA.setBackgroundColor(Color.parseColor("#1a472a"));
                     bannerHA.setBackgroundResource(R.drawable.slytherinbanner);
                     bttnSHA.setBackgroundColor(Color.parseColor("#1a472a"));
+
+                    ArrayAdapter<String> spinnerAdapter2 = new ArrayAdapter<String>(
+                            MainActivity.this,
+                            android.R.layout.simple_spinner_dropdown_item, new String[] {
+                            "--Houses--","Gryffindor", "Ravenclaw","Hufflepuff" });
+                    spinnerAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    selectHB.setAdapter(spinnerAdapter2);
+
+
                 } else if (selectedItem.equals("Ravenclaw")) {
                     bannerHA.setImageDrawable(null);
                     linearHA.setBackgroundColor(Color.parseColor("#283593"));
                     bannerHA.setBackgroundResource(R.drawable.ravenclawbanner);
                     bttnSHA.setBackgroundColor(Color.parseColor("#283593"));
+
+
+                    ArrayAdapter<String> spinnerAdapter2 = new ArrayAdapter<String>(
+                            MainActivity.this,
+                            android.R.layout.simple_spinner_dropdown_item, new String[] {
+                            "--Houses--","Gryffindor", "Slytherin","Hufflepuff" });
+                    spinnerAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    selectHB.setAdapter(spinnerAdapter2);
+
                 } else if (selectedItem.equals("Gryffindor")) {
                     bannerHA.setImageDrawable(null);
                     linearHA.setBackgroundColor(Color.parseColor("#ae0001"));
                     bannerHA.setBackgroundResource(R.drawable.gryffindorbanner);
                     bttnSHA.setBackgroundColor(Color.parseColor("#ae0001"));
+
+                    ArrayAdapter<String> spinnerAdapter2 = new ArrayAdapter<String>(
+                            MainActivity.this,
+                            android.R.layout.simple_spinner_dropdown_item, new String[] {
+                            "--Houses--","Ravenclaw", "Slytherin","Hufflepuff" });
+                    spinnerAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    selectHB.setAdapter(spinnerAdapter2);
+
                 } else if (selectedItem.equals("Hufflepuff")) {
                     bannerHA.setImageDrawable(null);
                     linearHA.setBackgroundColor(Color.parseColor("#003319"));
                     bannerHA.setBackgroundResource(R.drawable.hufflepuffbanner);
                     bttnSHA.setBackgroundColor(Color.parseColor("#003319"));
+
+                    ArrayAdapter<String> spinnerAdapter2 = new ArrayAdapter<String>(
+                            MainActivity.this,
+                            android.R.layout.simple_spinner_dropdown_item, new String[] {
+                            "--Houses--","Gryffindor", "Slytherin","Ravenclaw" });
+                    spinnerAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    selectHB.setAdapter(spinnerAdapter2);
+
                 }
             } // to close the onItemSelected
 
@@ -81,21 +117,54 @@ public class MainActivity extends AppCompatActivity {
                     linearHB.setBackgroundColor(Color.parseColor("#1a472a"));
                     bannerHB.setBackgroundResource(R.drawable.slytherinbanner);
                     bttnSHB.setBackgroundColor(Color.parseColor("#1a472a"));
+/*
+                    ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(
+                            MainActivity.this,
+                            android.R.layout.simple_spinner_dropdown_item, new String[] {
+                            "--Houses--","Gryffindor", "Hufflepuff","Ravenclaw" });
+                    spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    selectHA.setAdapter(spinnerAdapter);
+
+*/
                 } else if (selectedItem.equals("Ravenclaw")) {
                     bannerHB.setImageDrawable(null);
                     linearHB.setBackgroundColor(Color.parseColor("#283593"));
                     bannerHB.setBackgroundResource(R.drawable.ravenclawbanner);
                     bttnSHB.setBackgroundColor(Color.parseColor("#283593"));
+/*
+                    ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(
+                            MainActivity.this,
+                            android.R.layout.simple_spinner_dropdown_item, new String[] {
+                            "--Houses--","Gryffindor", "Hufflepuff","Slytherin" });
+                    spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    selectHA.setAdapter(spinnerAdapter);
+*/
                 } else if (selectedItem.equals("Gryffindor")) {
                     bannerHB.setImageDrawable(null);
                     linearHB.setBackgroundColor(Color.parseColor("#ae0001"));
                     bannerHB.setBackgroundResource(R.drawable.gryffindorbanner);
                     bttnSHB.setBackgroundColor(Color.parseColor("#ae0001"));
+/*
+                    ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(
+                            MainActivity.this,
+                            android.R.layout.simple_spinner_dropdown_item, new String[] {
+                            "--Houses--","Ravenclaw", "Hufflepuff","Ravenclaw" });
+                    spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    selectHA.setAdapter(spinnerAdapter);
+*/
                 } else if (selectedItem.equals("Hufflepuff")) {
                     bannerHB.setImageDrawable(null);
                     linearHB.setBackgroundColor(Color.parseColor("#003319"));
                     bannerHB.setBackgroundResource(R.drawable.hufflepuffbanner);
                     bttnSHB.setBackgroundColor(Color.parseColor("#003319"));
+/*
+                    ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(
+                            MainActivity.this,
+                            android.R.layout.simple_spinner_dropdown_item, new String[] {
+                            "--Houses--","Gryffindor", "Slytherin","Ravenclaw" });
+                    spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    selectHA.setAdapter(spinnerAdapter);
+*/
                 }
             } // to close the onItemSelected
 
@@ -183,6 +252,8 @@ public class MainActivity extends AppCompatActivity {
         bannerHA.setVisibility(View.INVISIBLE);
         linearHB.setBackgroundColor(Color.parseColor("#FFFFFF"));
         linearHA.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        bttnSHA.setBackgroundColor(Color.parseColor("#d6d6d6"));
+        bttnSHB.setBackgroundColor(Color.parseColor("#d6d6d6"));
     }
 
     private void displayScoreA(int Number) {
