@@ -108,6 +108,8 @@ public class MainActivity extends AppCompatActivity {
         bttnSHA.setEnabled(false);
         bttnSHB.setEnabled(false);
         actionButtons(false);
+        bannerHB.setVisibility(View.INVISIBLE);
+        bannerHA.setVisibility(View.INVISIBLE);
     }
 
     public void startMatchButton(View View) {
@@ -120,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
             bttnSHB.setEnabled(true);
             actionButtons(true);
             bttnStart.setVisibility(View.INVISIBLE);
+            bannerHA.setVisibility(View.VISIBLE);
+            bannerHB.setVisibility(View.VISIBLE);
         }else{
             selectHB.setEnabled(true);
             selectHA.setEnabled(true);
@@ -169,14 +173,16 @@ public class MainActivity extends AppCompatActivity {
         scoreHouseA = 0;
         displayScoreB(scoreHouseB);
         displayScoreA(scoreHouseA);
-        actionButtons(true);
-        bttnSHB.setEnabled(true);
-        bttnSHA.setEnabled(true);
+        actionButtons(false);
+        bttnSHB.setEnabled(false);
+        bttnSHA.setEnabled(false);
         bttnStart.setVisibility(View.VISIBLE);
         selectHB.setEnabled(true);
         selectHA.setEnabled(true);
-        linearHA.setBackgroundColor(Color.parseColor("#ffff"));
-        linearHB.setBackgroundColor(Color.parseColor("#ffff"));
+        bannerHB.setVisibility(View.INVISIBLE);
+        bannerHA.setVisibility(View.INVISIBLE);
+        linearHB.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        linearHA.setBackgroundColor(Color.parseColor("#FFFFFF"));
     }
 
     private void displayScoreA(int Number) {
