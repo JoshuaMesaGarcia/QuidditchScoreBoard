@@ -1,7 +1,6 @@
 package com.example.android.quidditchgame;
 
 import android.graphics.Color;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,17 +14,18 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    int scoreHouseA = 0;
-    int scoreHouseB = 0;
+    //Global variables
+    int scoreHouseA = 0; // The score of House A (Left)
+    int scoreHouseB = 0; // The score of House A (Left)
     LinearLayout linearHB;
     LinearLayout linearHA;
-    Button bttnSHB;
-    Button bttnSHA;
-    private Spinner selectHA;
-    private Spinner selectHB;
+    Button bttnSHB; // Button Snitch Catched House B
+    Button bttnSHA; // Button Snitch Catched House A
+    private Spinner selectHA; // Menu to select House A
+    private Spinner selectHB; // Menu to select House A
     ImageView bannerHA;
     ImageView bannerHB;
-    Button bttnStart;
+    Button bttnStart; // Button Start Match
 
 
     @Override
@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //We need to create the variables here because this method create this variables at the
+        //begginning of the application
         linearHB = (LinearLayout) findViewById(R.id.linearB);
         linearHA = (LinearLayout) findViewById(R.id.linearA);
         bttnSHB = (Button) findViewById(R.id.buttonSB);
@@ -43,15 +45,17 @@ public class MainActivity extends AppCompatActivity {
         bannerHB = (ImageView) findViewById(R.id.bannerHouseB);
         bttnStart = (Button) findViewById(R.id.startButton);
 
+        // We select a house from the menu and depending the selected choice the another spinner will change
         selectHA.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem = parent.getItemAtPosition(position).toString();
                 if (selectedItem.equals("Slytherin")) {
-                    bannerHA.setImageDrawable(null);
-                    linearHA.setBackgroundColor(Color.parseColor("#1a472a"));
-                    bannerHA.setBackgroundResource(R.drawable.slytherinbanner);
-                    bttnSHA.setBackgroundColor(Color.parseColor("#1a472a"));
+                    bannerHA.setImageDrawable(null); // Remove the image from the previous House
+                    linearHA.setBackgroundColor(Color.parseColor("#1a472a")); // Color of the house on the layout
+                    bannerHA.setBackgroundResource(R.drawable.slytherinbanner); // Set the banner
+                    bttnSHA.setBackgroundColor(Color.parseColor("#1a472a"));  // Color of the house on the Button
 
+                    //Change dynamically the menu of House B thats allows no repetition in House A
                     ArrayAdapter<String> spinnerAdapter2 = new ArrayAdapter<String>(
                             MainActivity.this,
                             android.R.layout.simple_spinner_dropdown_item, new String[] {
@@ -117,54 +121,25 @@ public class MainActivity extends AppCompatActivity {
                     linearHB.setBackgroundColor(Color.parseColor("#1a472a"));
                     bannerHB.setBackgroundResource(R.drawable.slytherinbanner);
                     bttnSHB.setBackgroundColor(Color.parseColor("#1a472a"));
-/*
-                    ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(
-                            MainActivity.this,
-                            android.R.layout.simple_spinner_dropdown_item, new String[] {
-                            "--Houses--","Gryffindor", "Hufflepuff","Ravenclaw" });
-                    spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    selectHA.setAdapter(spinnerAdapter);
 
-*/
                 } else if (selectedItem.equals("Ravenclaw")) {
                     bannerHB.setImageDrawable(null);
                     linearHB.setBackgroundColor(Color.parseColor("#283593"));
                     bannerHB.setBackgroundResource(R.drawable.ravenclawbanner);
                     bttnSHB.setBackgroundColor(Color.parseColor("#283593"));
-/*
-                    ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(
-                            MainActivity.this,
-                            android.R.layout.simple_spinner_dropdown_item, new String[] {
-                            "--Houses--","Gryffindor", "Hufflepuff","Slytherin" });
-                    spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    selectHA.setAdapter(spinnerAdapter);
-*/
+
                 } else if (selectedItem.equals("Gryffindor")) {
                     bannerHB.setImageDrawable(null);
                     linearHB.setBackgroundColor(Color.parseColor("#ae0001"));
                     bannerHB.setBackgroundResource(R.drawable.gryffindorbanner);
                     bttnSHB.setBackgroundColor(Color.parseColor("#ae0001"));
-/*
-                    ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(
-                            MainActivity.this,
-                            android.R.layout.simple_spinner_dropdown_item, new String[] {
-                            "--Houses--","Ravenclaw", "Hufflepuff","Ravenclaw" });
-                    spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    selectHA.setAdapter(spinnerAdapter);
-*/
+
                 } else if (selectedItem.equals("Hufflepuff")) {
                     bannerHB.setImageDrawable(null);
                     linearHB.setBackgroundColor(Color.parseColor("#003319"));
                     bannerHB.setBackgroundResource(R.drawable.hufflepuffbanner);
                     bttnSHB.setBackgroundColor(Color.parseColor("#003319"));
-/*
-                    ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(
-                            MainActivity.this,
-                            android.R.layout.simple_spinner_dropdown_item, new String[] {
-                            "--Houses--","Gryffindor", "Slytherin","Ravenclaw" });
-                    spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    selectHA.setAdapter(spinnerAdapter);
-*/
+
                 }
             } // to close the onItemSelected
 
@@ -174,17 +149,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        bttnSHA.setEnabled(false);
+        bttnSHA.setEnabled(false); //Because is the creation of the game we want that everything is turned of
         bttnSHB.setEnabled(false);
         actionButtons(false);
         bannerHB.setVisibility(View.INVISIBLE);
         bannerHA.setVisibility(View.INVISIBLE);
     }
 
+    // Method that initiate the match
     public void startMatchButton(View View) {
         String strSelectHA = selectHA.getItemAtPosition(selectHA.getSelectedItemPosition()).toString();
         String strSelectHB = selectHB.getItemAtPosition(selectHB.getSelectedItemPosition()).toString();
-        if((strSelectHA != "--Houses--")&&(strSelectHB != "--Houses--")){
+        if((strSelectHA != "--Houses--")&&(strSelectHB != "--Houses--")){ //If the selection of both houses are different than Houses the game can start
             selectHB.setEnabled(false);
             selectHA.setEnabled(false);
             bttnSHA.setEnabled(true);
@@ -203,11 +179,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Methods to score points and then set into the screen
     public void scoreIncreaseTA(View scoreOn) {
-        String score = scoreOn.getTag().toString();
-        int result = Integer.parseInt(score);
+        String score = scoreOn.getTag().toString(); //Get the value of the tag of that button
+        int result = Integer.parseInt(score); // Cast the string into int
         scoreHouseA = scoreHouseA + result;
-        displayScoreA(scoreHouseA);
+        displayScoreA(scoreHouseA);//Goes to this method -> which will display the result
     }
 
     public void scoreIncreaseTB(View scoreOn) {
@@ -217,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
         displayScoreB(scoreHouseB);
     }
 
+    //Methods that implement the catching of the Snitch
     public void scoreSnitchA(View View) {
         scoreHouseA = scoreHouseA + 150;
         displayScoreA(scoreHouseA);
@@ -237,6 +215,7 @@ public class MainActivity extends AppCompatActivity {
         actionButtons(false);
     }
 
+    //Method to start a new Match - Everything has to be disable
     public void newMatch(View View) {
         scoreHouseB = 0;
         scoreHouseA = 0;
@@ -254,8 +233,17 @@ public class MainActivity extends AppCompatActivity {
         linearHA.setBackgroundColor(Color.parseColor("#FFFFFF"));
         bttnSHA.setBackgroundColor(Color.parseColor("#d6d6d6"));
         bttnSHB.setBackgroundColor(Color.parseColor("#d6d6d6"));
+
+        //This allows that at least one of the houses has houses on the menu wich it means the match cannot start
+        ArrayAdapter<String> spinnerAdapter2 = new ArrayAdapter<String>(
+                MainActivity.this,
+                android.R.layout.simple_spinner_dropdown_item, new String[] {
+                "--Houses--","Ravenclaw", "Slytherin","Hufflepuff" });
+        spinnerAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        selectHB.setAdapter(spinnerAdapter2);
     }
 
+    //
     private void displayScoreA(int Number) {
         TextView scoreTeamA = (TextView) findViewById(R.id.pointsTeamA);
         scoreTeamA.setText("" + Number);
@@ -266,6 +254,7 @@ public class MainActivity extends AppCompatActivity {
         scoreTeamB.setText("" + Number);
     }
 
+    //Method to disable every score button from every LinearLayout
     private void actionButtons(boolean parameter) {
 
         for (int x = 0; x < linearHB.getChildCount(); x++) {
